@@ -1,0 +1,97 @@
+.login-form {
+  height: 100%;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: #ffffff;
+  /* overflow: visible !important;
+  background: -webkit-linear-gradient(45deg, #085078 10%, #85d8ce 90%);
+  background: -moz-linear-gradient(45deg, #085078 10%, #85d8ce 90%);
+  background: -ms-linear-gradient(45deg, #085078 10%, #85d8ce 90%);
+  background: -o-linear-gradient(45deg, #085078 10%, #85d8ce 90%);
+  background: linear-gradient(45deg, #085078 10%, #85d8ce 90%); */
+}
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 50px 15px 50px 15px;
+  margin: auto;
+  text-align: center;
+  /* background-color: #ffffff; */
+  background-color: #110255;
+  /* border-radius: 10px; */
+  box-shadow: #ffffff;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.form-signin input[type="email"] {
+  width: 80%;
+  margin-bottom: 20px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  background: rgba(196, 197, 197, 0.3);
+}
+.form-signin input[type="password"] {
+  width: 80%;
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  background: rgba(196, 197, 197, 0.3);
+}
+.form-signin input[type="text"] {
+  width: 80%;
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  background: rgba(246, 248, 248, 0.3);
+}
+
+.login-button {
+  width: 80%;
+  color: #27077e;
+  background: #ffffff;
+  /* border-radius: 20px; */
+  border: none;
+  opacity: 0.8;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.login-button:hover {
+  color: #ffffff;
+  background: #3118c0;
+  opacity: 1;
+}

@@ -1,3 +1,171 @@
+# DaysApp
+
+## 環境構築
+
+①React フォルダ作成
+
+```
+npx create-react-app フォルダ名
+```
+
+環境構築がされているか確認
+
+```
+npm start
+```
+
+②Firebase でプロジェクトの作成
+
+firebase の導入、リソースロケーションの設定
+プロジェクトの作成
+プロジェクト名を入力
+→Google アナリティクスを有効
+→Google アナリティクスの構成(国籍日本)
+→ プロジェクトの作成完了
+
+ウェブをクリック(</>)し、ウェブアプリに Firebase を追加。
+Firebase Hosting も設定するにチェック。
+
+→ 歯車の設定から「プロジェクトを設定」、Google Cloud Platform リソースロケーションを「asia-northeast1」を選択
+→</>ウェブアプリに Firebase を追加、アプリのニックネーム(プロジェクト名と同様)、Firebase Hosting も設定しますにチェック、アプリを登録
+→
+
+データベースの設定
+本番環境で開始、ロケーションは先ほど選択したもので OK。
+
+③ 必要なもののインストール
+MaterialUi のインストール(package.json でインストール 確認)
+
+```
+npm install --save @material-ui/core @material-ui/icons @material-ui/system @material-ui/styles firebase history react-router react-router-dom
+```
+
+※index.html の不要な文章を削除、title の変更
+
+グローバルインストール (一度した実行した場合には、省略)
+
+```
+npm install -g firebase-tools; (-g なのでMACにインストール )
+```
+
+④firebase login
+firebase login (firebase logout)
+Allow Firebase to collect CLI usage and error reporting information? y/n y
+→Firebase CLI が Google アカウントへのアクセスをリクエストしています。(プロジェクト作成したアカウントを選択)
+//Firebase CLI Login Successful 画像 ↓
+
+⑤firebase init;
+firebase init;
+矢印キーでカーソルを移動させ、スペースキーで利用するサービスを選択し、Enter
+? Are you ready to proceed? Yes
+? Which Firebase CLI features do you want to set up for this folder? Press Space to select features, then Enter to confirm your choices. (Press <space> to select, <a> to toggle all, <i> to invert selection)
+
+> ( ) Database: Deploy Firebase Realtime Database Rules
+> ( ) Firestore: Deploy rules and create indexes for Firestore
+> ( ) Functions: Configure and deploy Cloud Functions
+> ( ) Hosting: Configure and deploy Firebase Hosting sites
+> ( ) Storage: Deploy Cloud Storage security rules
+
+対象の Firebase のサイト側で作成したプロジェクトを選択します。既存のプロジェクトを使うので「Use an existing project」を選択。
+? Please select an option: (Use arrow keys)
+
+> Use an existing project
+> Create a new project
+> Add Firebase to an existing Google Cloud Platform project
+> Don't set up a default project
+
+先ほど作成した「my-first-deploy」を選んで下さい。(プロジェクト名の後に付いている文字列は無視して大丈夫です)
+? Please select an option: Use an existing project
+? Select a default Firebase project for this directory: (Use arrow keys)
+
+> my-first-deploy-5732d (my-first-deploy)
+
+What file should be used for Firestore Rules? Enter クリック
+
+What file should be used for Firestore indexes? Enter クリック
+
+What language would you like to use to write Cloud Function?
+
+> ( ) Javascript
+> ( ) Typescript
+
+? Do you want to use ESLint to catch probable bugs and enforce style? (y/N) N
+
+Do you want to install dependencies with npm now? y/n y
+
+What do you want to use as your public directory? build
+
+? Configure as a single-page app (rewrite all urls to /index.html)? (y/N) Y
+
+? Set up automatic builds and deploys with GitHub? (y/N) N
+
+? What file should be used for Storage Rules? (storage.rules) Enter クリック
+
+↓ 既に存在している index.html を上書きするか選択できます。当然 No です。
+
+- Wrote public/404.html
+  ? File public/index.html already exists. Overwrite? (y/N)
+  i Skipping write of public/index.html
+  i Writing configuration info to firebase.json...
+  i Writing project information to .firebaserc...
+  i Writing gitignore file to .gitignore...
+- Firebase initialization complete!
+
+⑥firebase deploy
+build フォルダの作成
+
+```
+npm run build;
+```
+
+build フォルダが作成されていることを確認。
+
+functions/src/index.js or index.ts を全てコメントアウト
+
+Firebase のコンソールから料金プランを「Blaze」の従量制に変更。
+メールで変更されていることを確認。
+
+firebase deploy;
+本番環境 ↓
+Hosting URL: https://days-app-f89c6.web.app
+
+//⑦firebase deploy 取り消し
+公開したアプリを放置するのはオススメできません。何かしら作業を続けるのでなければ、一旦デプロイを取り消しましょう。
+
+```
+~/Desktop/deploy > firebase hosting:disable
+? Are you sure you want to disable Firebase Hosting?
+  This will immediately make your site inaccessible! (Y/n) Yes
++  Hosting has been disabled for my-first-deploy. Deploy a new version to re-enable.
+```
+
+↑ Firebase Hosting を使えなくして良いか聞かれます。y を入力すると、デプロイは取り消されますが、
+暫くは見ることが出来るようです。仮に取り消しても、もう一度
+
+```
+~/Desktop/deploy > firebase deploy
+```
+
+とやれば、再びデプロイできます。
+
+完了
+
+参照先
+React 入門チュートリアル (5) ToDo アプリを作ってみよう
+https://www.hypertextcandy.com/react-tutorial-05-wrap-up-with-todo-app
+
+ResponsiveDrawer を Home コンポーネントに適応
+https://material-ui.com/components/drawers/
+
+React Router が Hooks 対応したので使い方を整理する
+https://qiita.com/ozaki25/items/bb0eb273611eebc603dd
+
+Simple App Bar
+https://material-ui.com/components/app-bar/#simple-app-bar
+
+Material-UI でヘッダーを作る【React】
+https://john-kaz.hatenablog.com/entry/2018/11/18/151527
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

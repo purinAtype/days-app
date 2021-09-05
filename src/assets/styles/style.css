@@ -1,0 +1,43 @@
+/* Home.jsx */
+main {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.logoutHeader {
+  background-color: #193cad;
+  padding: 0px 6px;
+}
+
+.userContent {
+  text-align: center;
+  font-size: 12px;
+}
+.userInner {
+  box-sizing: border-box;
+  width: 80%;
+  margin: 20px auto;
+  border: solid 1px #e4e4e4;
+  background-color: #fdfdfd;
+  padding: 30px 0;
+}
+
+/* Todo.jsx */
+.panel {
+  height: 80vh;
+  padding-top: 20px;
+}
+.panel-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+.todo-add {
+  text-align: center;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.text-grey-light {
+  color: gray;
+}
