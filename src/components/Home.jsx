@@ -39,10 +39,9 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import CloseIcon from '@material-ui/icons/Close';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { auth , db } from "../firebase/index";
-import { Todo } from "./index";
 import { Mail } from "@material-ui/icons";
 import userEvent from "@testing-library/user-event";
-import Profile from "./Profile";
+import { Header,Todo,Profile } from "./index";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,112 +67,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
-  const history = useHistory();
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const toggle = () => setOpen(!open);
-
-  const handleLogout = () => {
-    auth
-      .signOut()
-      .then((result) => {
-        // history.push("/signin");
-        console.log("sign out successfully.");
-        // ログイン画面に戻る等
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
-  let user = auth.currentUser;
 
   return (
     <>
-      <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon onClick={toggle}/>
-          </IconButton>
-
-          <Drawer
-            open={open}
-            docked={false}
-            onRequestChange={toggle}
-          >
-          <div className={classes.list}>
-            <div className={classes.drawerHeader}>
-              <IconButton onClick={toggle}>
-                <CloseIcon/>
-              </IconButton>
-            </div>
-            <Divider />
-            <List >
-              <ListItem button >
-                <ListItemIcon><HomeIcon /></ListItemIcon>
-                <ListItemText primary={"Home"} />
-              </ListItem>
-              <ListItem button >
-                <ListItemIcon><MailIcon /></ListItemIcon>
-                <ListItemText primary={"Apply"} />
-              </ListItem>
-              <ListItem button >
-                <ListItemIcon><MailIcon /></ListItemIcon>
-                <ListItemText primary={"Todo"} />
-              </ListItem>
-              <ListItem button >
-                <ListItemIcon><ChatIcon /></ListItemIcon>
-                <ListItemText primary={"Chat"} />
-              </ListItem>
-              <ListItem button >
-                <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary={"Post"} />
-              </ListItem>
-              <ListItem button >
-                <ListItemIcon><TodayIcon /></ListItemIcon>
-                <ListItemText primary={"calendar"} />
-              </ListItem>
-              <ListItem button >
-                <ListItemIcon><SettingsIcon /></ListItemIcon>
-                <ListItemText primary={"Setting"} />
-              </ListItem>
-              <ListItem button >
-                <ListItemIcon><HelpIcon /></ListItemIcon>
-                <ListItemText primary={"Help"} />
-              </ListItem>
-            </List>
-            <Divider />
-            <div className="userContent">
-              <div className="userInner">
-              <p id="userName" className="userName">{user.displayName}</p>
-              <p id="userEmail" className="userEmail">{user.email}</p>
-              </div>
-            </div>
-          </div>
-          </Drawer>
-
-          <Typography variant="h6" className={classes.title}>
-            DaysApp
-          </Typography>
-          <div className="logoutHeader">
-            <Button color="inherit" onClick={handleLogout} >
-              LOGOUT　<ExitToAppIcon />
-            </Button>
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-    <main>
-      {/* <Todo/> */}
-      <Router>
-        <Switch>
-          <Route exact path={'/home/todo'} component={Todo}/>
-          <Route path={'/home/profile'} component={Profile}/>
-        </Switch>
-      </Router>
-    </main>
+      <Header />
+      <main>
+        <Router>
+          <Switch>
+            <Route path={'/todo'} component={Todo}/>
+            <Route path={'/profile'} component={Profile}/>
+          </Switch>
+        </Router>
+      </main>
     </>
   );
 };

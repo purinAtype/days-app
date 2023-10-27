@@ -1,6 +1,6 @@
 import React, {useState,useEffect,useCallback}  from 'react';
 import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from 'react-router-dom';
-import {SignIn, SignUp, Home, Profile, AuthProvider, PrivateRoute} from './components/index';
+import {SignIn, SignUp, Home, Profile, AuthProvider, PrivateRoute, Todo} from './components/index';
 
 // import { AuthProvider } from "./components/Auth";
 // import PrivateRoute from "./components/PrivateRouter";
@@ -13,23 +13,28 @@ import './assets/styles/style.css';
 function App() {
   const history = useHistory();
 
+
+  const goToHome = () => {
+    history.push('/')
+  }
+  const goToProfile = () => {
+    history.push('/profile')
+  }
+  const goToTodo = () => {
+    history.push('/todo')
+  }
+
+
   return (
   <div className="wrapper">
     <AuthProvider>
       <Router>
         <Switch>
-            <PrivateRoute exact path="/" component={Home} />
-            <PrivateRoute exact path="/home" component={Home} />
-            <PrivateRoute exact path="/home/todo" component={Home} />
-            <PrivateRoute exact path="/home/profile" component={Home} />
-            <PrivateRoute exact path="/ja" component={Home} />
+            <PrivateRoute path="/" component={Home} />
+            {/* <PrivateRoute exact path="/home" component={Home} /> */}
+            {/* <PrivateRoute path="/todo" component={Todo} />
+            <PrivateRoute path="/profile" component={Profile} /> */}
 
-            <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute exact path="/profile/ja" component={Profile} />
-            <PrivateRoute exact path="/profile/en" component={Profile} />
-            <PrivateRoute exact path="/profile/cn" component={Profile} />
-
-            {/* <PrivateRoute exact path="/" component={Home} /> */}
             <Route exact path={"/signin"} component={SignIn} />
             <Route exact path={"/signup"} component={SignUp} />
         </Switch>

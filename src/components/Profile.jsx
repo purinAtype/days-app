@@ -15,21 +15,23 @@ const Profile = () => {
   const history = useHistory();
   return (
     <>
-    <Router>
-      <div style={{margin: 20}}>
-      <Switch>
-        <Route exact path={'/home/profile'} component={Home}/>
-        <Route exact path={'/home/profile/ja'} component={HomeJapanese}/>
-        <Route exact path={'/home/profile/en'} component={HomeEnglish}/>
-        <Route exact path={'/home/profile/cn'} component={HomeChinese}/>
-      </Switch>
-      </div>
-    </Router>
+    <div style={{margin: 20}}>
+      <Greeting />
+    </div>
+    <div style={{margin: 20}}>
+      <Router>
+          <Switch>
+            <Route path={'/profile/ja'} component={Japanese}/>
+            <Route path={'/profile/en'} component={English}/>
+            <Route path={'/profile/cn'} component={Chinese}/>
+          </Switch>
+      </Router>
+    </div>
     </>
   );
 };
 
-const Home = () => {
+const Greeting = () => {
   return (
     <div>
       <h1>Hello App</h1>
@@ -43,7 +45,7 @@ const Home = () => {
   );
 }
 
-const HomeJapanese = () => {
+const Japanese = () => {
   return(
     <div>
       <h1>こんにちわ</h1>
@@ -51,7 +53,7 @@ const HomeJapanese = () => {
     </div>
   );
 }
-const HomeEnglish = () => {
+const English = () => {
   return (
   <div>
     <h1>Hello</h1>
@@ -59,7 +61,7 @@ const HomeEnglish = () => {
   </div>
   );
 }
-const HomeChinese = () => {
+const Chinese = () => {
   return (
   <div>
     <h1>你好</h1>
